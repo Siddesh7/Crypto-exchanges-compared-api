@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C4crypto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <style>
+      html {
+      
+        background: linear-gradient(
+            45deg,
+            rgb(15, 182, 179) 0%,
+            rgb(22, 191, 90) 25%,
+            rgba(25, 202, 234, 0.848) 60%,
+            rgb(0, 213, 255) 80%,
+            rgb(22, 191, 140) 98%
+          )
+          no-repeat;
+      }
+ 
+      table {
+        width: 100%;
+        table-layout: fixed;
+      }
+      .tbl-header {
+        background-color: rgba(226, 201, 201, 0.504);
+      }
+      .tbl-content {
+        height: 450px;
+        overflow-x: auto;
+        margin-top: 0px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.508);
+      }
+      th {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 24px;
+        color: #fff;
+        text-transform: uppercase;
+        background: linear-gradient(to right, #5900e8, rgb(255, 179, 0));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 200;
+        font-size: 20px;
+        color: #000000;
+        font-family: 'Roboto Slab', serif;
+        border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+      }
+      #table-ds span{
+        font-size:13px;color: #000000;
+      }
+      section{
+        margin: 50px;
+        margin-bottom: 0;
+      }
+      .red{
+        color:red;
+      }
+      .green{
+        color: rgb(0, 255, 0);
+        text-shadow: 0px 0px 1px #fff, 1px 1px 1px rgb(0, 0, 0);
+        /* text-shadow: 2px 0 0 rgb(0, 0, 0), -2px 0 0 rgb(0, 0, 0), 0 2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0); */
+      }
+      img{
+        width:80px;
+      }
+      .head{
+        display: flex;
+        margin-top: 5px;
+        justify-content: center;
+        align-items: center;
+      }
+      .head h1{
+        font-size: 33px;
+        align-items: center;
+        justify-content: center;
+      }
+      #indicator{
+        background-color:rgb(0, 255, 0) ;
+        border: 2px solid white;
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        font-family: 'Roboto Slab', serif;
+  
+      }
+      #disclaimer{
+        width: 90%;
+        margin: auto;
+        display:flex;
+        margin-top: 0;
+        justify-content:space-between; 
+        align-items: center; 
+      }
+
+      .footer{
+        text-align: center;
+      }
+      .footer img{
+        margin-top: -45px;
+        width: 200px;
+      }
+      #nowrap{
+        color: #5900e8;
+      }
+      @media screen and (max-width: 600px) {
+        section{
+          margin: 0;
+        }
+        th{
+          font-size: 14px;
+          padding: 15px 3px;
+          text-align: center;
+        }
+        td{
+          font-size: 14px;  
+          padding: 15px 3px; 
+          text-align: center;     
+        }
+        .head{
+          margin-bottom: 10px;
+        }
+ 
+        img{
+          width:80px;
+
+        }
+        .head h1{
+          font-size:22px;
+        }
+        #nowrap{
+         text-align: left;
+          font-size: 14px;
+        }
+        #disclaimer{
+          margin-top:-30px;
+        width: 100%;
+        font-size: 10px;
+      }
+      #indicator{
+        background-color:rgb(0, 255, 0) ;
+        border: 1px solid white;
+        width: 10px;
+        height: 10px;
+    }
+      .footer img{
+        width: 200px;
+      }
+      .footer img{
+        margin-top: -35px;
+        width: 200px;
+      }
+ 
+      }
+    </style>
+    <div id="tsparticles"></div>
+
+    <div class="head">
+      <img src="thug.png" alt="" />
+      <h1>Buy Low, Sell High</h1>
+    </div>
+    <div id="disclaimer">
+      <div style="display: flex; align-items: center;">     
+        <div id="indicator"></div>
+        <h4> :Indicates the lowest and best price</h4>
+      </div> 
+      <h4>*Price Updates 5 Seconds*</h4>     
+    </div>
+    <section style="margin-top:-10px ;">
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>WazirX</th>
+              <th>CoinDCX</th>
+              <th>Bitbns</th>
+              <th>Zebpay</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="" cellspacing="0" border="0">
+          <tbody id="table-ds">
+            <tr id="btc">
+              <td id="nowrap">Bitcoin <br><span>BTC</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="eth">
+              <td id="nowrap">Ethereum <br><span>ETH</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="usdt">
+              <td id="nowrap">Tether <br><span>USDT</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="bnb">
+              <td id="nowrap">Binance <br><span>BNB</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="ada">
+              <td id="nowrap">Cardano <br><span>ADA</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="xrp">
+              <td id="nowrap">Ripple <br><span>XRP</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="sol">
+              <td id="nowrap">Solana <br><span>SOL</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="matic">
+              <td id="nowrap">Polygon <br><span>MATIC</td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="doge">
+              <td id="nowrap">Dogecoin <br><span>DOGE</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="dot">
+              <td id="nowrap">Polkadot <br><span>Dot</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="trx">
+              <td id="nowrap">Tron <br><span>TRX</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="shib">
+              <td id="nowrap">Shiba Inu <br><span>SHIB</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="avax">
+              <td id="nowrap">Avalanche <br><span>AVAX</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="ltc">
+              <td id="nowrap">Litecoin <br><span>LTC</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="uni">
+              <td id="nowrap">Uniswap <br><span>UNI</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="xlm">
+              <td id="nowrap">Stellar <br><span>XLM</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+            <tr id="near">
+              <td id="nowrap">Near <br><span>NEAR</span></td>
+              <td class="child child-1">NA</td>
+              <td class="child child-2">NA</td>
+              <td class="child child-3">NA</td>
+              <td class="child child-4">NA</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <div class="footer">
+      <a href="http://c4crypto.me"  target="_blank" rel="noreferrer noopener"><img src="footer.png" ></a>
+    </div>
+
+    <script>
+      $(window)
+        .on("load resize ", function () {
+          var scrollWidth =
+            $(".tbl-content").width() - $(".tbl-content table").width();
+          $(".tbl-header").css({ "padding-right": scrollWidth });
+        })
+        .resize();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.32.0/tsparticles.min.js"></script>
+    <script>
+      tsParticles.load("tsparticles", {
+        background: {
+          color: {
+            value: "",
+          },
+        },
+        fullScreen: {
+          enable: true,
+          zIndex: -1,
+        },
+        interactivity: {
+          detectsOn: "window",
+        },
+        emitters: {
+          position: {
+            x: 50,
+            y: 0,
+          },
+          rate: {
+            quantity: 1,
+            delay: 0.5,
+          },
+        },
+        particles: {
+          color: {
+            value: ["#1E00FF", "#FF0061", "#E1FF00", "#00FF9E"],
+          },
+          move: {
+            decay: 0.05,
+            direction: "top",
+            enable: true,
+            gravity: {
+              enable: true,
+            },
+            outModes: {
+              top: "none",
+              default: "destroy",
+            },
+            speed: { min: 25, max: 50 },
+          },
+          number: {
+            value: 0,
+          },
+          opacity: {
+            value: 0.8,
+          },
+          rotate: {
+            value: {
+              min: 0,
+              max: 360,
+            },
+            direction: "random",
+            animation: {
+              enable: true,
+              speed: 15,
+            },
+          },
+          tilt: {
+            direction: "random",
+            enable: true,
+            value: {
+              min: 0,
+              max: 360,
+            },
+            animation: {
+              enable: true,
+              speed: 30,
+            },
+          },
+          size: {
+            value: 3,
+          },
+          roll: {
+            darken: {
+              enable: false,
+              value: 25,
+            },
+            enable: false,
+            speed: {
+              min: 5,
+              max: 15,
+            },
+          },
+          wobble: {
+            distance: 30,
+            enable: true,
+            speed: {
+              min: -7,
+              max: 7,
+            },
+          },
+          shape: {
+            type: ["image", "image", "image", "image"],
+            options: {
+              image: [
+                {
+                  src: "btc.png",
+                  width: 32,
+                  height: 32,
+                  particles: {
+                    size: {
+                      value: 32,
+                    },
+                  },
+                },
+                {
+                  src: "eth.png",
+                  width: 32,
+                  height: 32,
+                  particles: {
+                    size: {
+                      value: 32,
+                    },
+                  },
+                },
+                {
+                  src: "xrp.png",
+                  width: 32,
+                  height: 32,
+                  particles: {
+                    size: {
+                      value: 32,
+                    },
+                  },
+                },
+                {
+                  src: "doge.png",
+                  width: 32,
+                  height: 32,
+                  particles: {
+                    size: {
+                      value: 32,
+                    },
+                  },
+                },
+              ],
+              polygon: [
+                {
+                  sides: 5,
+                },
+                {
+                  sides: 6,
+                },
+              ],
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
