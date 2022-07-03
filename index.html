@@ -9,19 +9,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="script.js"></script>
   </head>
   <body>
     <style>
       html {
-      
+        position: relative;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      body, #end{
         background: linear-gradient(
             45deg,
             rgb(15, 182, 179) 0%,
             rgb(22, 191, 90) 25%,
             rgba(25, 202, 234, 0.848) 60%,
             rgb(0, 213, 255) 80%,
-            rgb(22, 191, 140) 98%
+            rgb(22, 191, 140) 100%
           )
           no-repeat;
       }
@@ -65,14 +71,12 @@
       #table-ds span{
         font-size:13px;color: #000000;
       }
-      section{
-        margin: 50px;
-        margin-bottom: 0;
+      .main{
+        margin: 0px 50px;
+        
+        height: 100vh;
       }
-      .red{
-        color:red;
-      }
-      .green{
+      .green1{
         color: rgb(0, 255, 0);
         text-shadow: 0px 0px 1px #fff, 1px 1px 1px rgb(0, 0, 0);
         /* text-shadow: 2px 0 0 rgb(0, 0, 0), -2px 0 0 rgb(0, 0, 0), 0 2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0); */
@@ -82,7 +86,7 @@
       }
       .head{
         display: flex;
-        margin-top: 5px;
+        margin-bottom: 20px;
         justify-content: center;
         align-items: center;
       }
@@ -91,38 +95,43 @@
         align-items: center;
         justify-content: center;
       }
-      #indicator{
-        background-color:rgb(0, 255, 0) ;
-        border: 2px solid white;
-        width: 15px;
-        height: 15px;
-        margin-right: 5px;
-        font-family: 'Roboto Slab', serif;
-  
-      }
-      #disclaimer{
-        width: 90%;
-        margin: auto;
-        display:flex;
-        margin-top: 0;
-        justify-content:space-between; 
-        align-items: center; 
-      }
-
-      .footer{
-        text-align: center;
-      }
-      .footer img{
-        margin-top: -45px;
-        width: 200px;
-      }
       #nowrap{
         color: #5900e8;
       }
+      .preloader{
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: rgb(63,245,251);
+          background: radial-gradient(circle, rgba(63,245,251,1) 0%, rgba(154,252,70,1) 100%);      }
+      .progress{
+        position: absolute;
+        width: 30%;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-45%);
+      }
+      .preloader h2{
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-45%);
+        color: #fff;
+        text-transform: uppercase;
+      }
+      #footer {
+        text-align: center;
+        padding-top: 10px;
+      }
+      #footer img{
+        width:250px
+      }
+ 
       @media screen and (max-width: 600px) {
-        section{
-          margin: 0;
-        }
+
         th{
           font-size: 14px;
           padding: 15px 3px;
@@ -141,6 +150,9 @@
           width:80px;
 
         }
+        #btc td{
+          font-size:12px ;
+        }
         .head h1{
           font-size:22px;
         }
@@ -148,41 +160,43 @@
          text-align: left;
           font-size: 14px;
         }
-        #disclaimer{
-          margin-top:-30px;
-        width: 100%;
-        font-size: 10px;
-      }
-      #indicator{
-        background-color:rgb(0, 255, 0) ;
-        border: 1px solid white;
-        width: 10px;
-        height: 10px;
-    }
-      .footer img{
-        width: 200px;
-      }
-      .footer img{
-        margin-top: -35px;
-        width: 200px;
-      }
+        .tbl-content{
+          height: 70%;
+        }
+        .main{
+          margin: 2px;
+        }
+        #foo{
+          width:220px
+        }
+        #footer{
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+        
+
  
       }
-    </style>
-    <div id="tsparticles"></div>
+      .remove{
 
-    <div class="head">
-      <img src="thug.png" alt="" />
-      <h1>Buy Low, Sell High</h1>
-    </div>
-    <div id="disclaimer">
-      <div style="display: flex; align-items: center;">     
-        <div id="indicator"></div>
-        <h4> :Indicates the lowest and best price</h4>
-      </div> 
-      <h4>*Price Updates 5 Seconds*</h4>     
-    </div>
-    <section style="margin-top:-10px ;">
+        display: none;
+      }
+
+    </style>
+    <section id="preloader" class="preloader">    
+      <h2>Loading</h2> 
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </section>
+    <section class="main">
+      <div id="tsparticles"></div>
+      <div class="head">
+        <img src="thug.png" alt="" />
+        <h1>Buy Low, Sell High</h1>
+      </div>
       <div class="tbl-header">
         <table cellpadding="0" cellspacing="0" border="0">
           <thead>
@@ -321,10 +335,12 @@
           </tbody>
         </table>
       </div>
+      <div id="footer">
+        <a href="http://c4crypto.me"  target="_blank" rel="noreferrer noopener"><img id="foo"src="footer.png" ></a>   
+      </div>
     </section>
-    <div class="footer">
-      <a href="http://c4crypto.me"  target="_blank" rel="noreferrer noopener"><img src="footer.png" ></a>
-    </div>
+    <div id="end"></div>
+
 
     <script>
       $(window)

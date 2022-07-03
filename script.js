@@ -19,7 +19,13 @@ let symbol='₹'
 window.addEventListener('load', () => {   
     refreshData()
     startTimer()
+    sleep(2500).then(() => {
+        document.getElementById('preloader').classList.add('remove');
+    })
 }); 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+ }
 function startTimer() {
     timer = setInterval(function() {
         refreshData();
@@ -263,25 +269,25 @@ function searchCoin(){
         let parent=document.getElementById(crypto);
         let children=parent.querySelectorAll(".child");
         if(ele==0){
-            children[0].classList.add('green');
-            children[1].classList.remove('green');
-            children[2].classList.remove('green');
-            children[3].classList.remove('green');
+            children[0].classList.add('green1');
+            children[1].classList.remove('green1');
+            children[2].classList.remove('green1');
+            children[3].classList.remove('green1');
         }else if(ele==1){
-            children[1].classList.add('green');
-            children[0].classList.remove('green');
-            children[2].classList.remove('green');
-            children[3].classList.remove('green');
+            children[1].classList.add('green1');
+            children[0].classList.remove('green1');
+            children[2].classList.remove('green1');
+            children[3].classList.remove('green1');
         }else if(ele==2){
-            children[2].classList.add('green');
-            children[1].classList.remove('green');
-            children[0].classList.remove('green');
-            children[3].classList.remove('green');
+            children[2].classList.add('green1');
+            children[1].classList.remove('green1');
+            children[0].classList.remove('green1');
+            children[3].classList.remove('green1');
         }else if(ele==3){
-            children[3].classList.add('green');
-            children[0].classList.remove('green');
-            children[2].classList.remove('green');
-            children[1].classList.remove('green');
+            children[3].classList.add('green1');
+            children[0].classList.remove('green1');
+            children[2].classList.remove('green1');
+            children[1].classList.remove('green1');
         }
 
     }
